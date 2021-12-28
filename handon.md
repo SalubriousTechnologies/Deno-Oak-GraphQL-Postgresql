@@ -1,5 +1,7 @@
 Install Deno and Postgresql
 
+<a href="https://github.com/SalubriousTechnologies/Deno-Oak-GraphQL-Postgresql/blob/main/deno_ins_cmd.md" target="_blank"> Deno Installation Link </a>
+
 **Create a database in PostGreSql**
   Create a table user_tbl
 

@@ -290,3 +290,15 @@ Respons
 }
 
 ```
+
+```
+
+query{ 
+	getUsers(where:{email:"vivek@gmail.com", id:6}, order: {colName:"id",orderBy:"desc"}){
+		id,
+		userName
+		email
+		contact     
+	}
+}
+```

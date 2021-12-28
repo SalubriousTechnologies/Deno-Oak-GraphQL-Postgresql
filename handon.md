@@ -251,3 +251,42 @@ Response
 
 
 ```
+
+
+# Edit User Query
+
+```
+
+mutation{	
+   editUser(input:{
+     userName: "Vinay",
+     email:"raman@gmail.com",
+     country: "india",
+     address:"Dih Ganjari Gangapur",
+     contact:4554554,
+     priority:HIGH
+  }, id:54){
+    id,
+    userName
+    email
+    
+  }
+   
+	
+}
+
+Respons
+
+{
+    "data": {
+        "editUser": [
+            {
+                "id": "54",
+                "userName": "Vinay",
+                "email": "raman@gmail.com"
+            }
+        ]
+    }
+}
+
+```

@@ -1,4 +1,4 @@
-deno+postgresql+graphql
+**Deno+Postgresql+Graphql**
 
 
 
@@ -6,8 +6,8 @@ deno+postgresql+graphql
  http://localhost:8080/graphql
 
 
-Query
-
+**Query Insert request**
+```
 mutation{	
    addUser(input:{
      userName: "Vinay",
@@ -22,8 +22,9 @@ mutation{
     email    
   }
 }
-
-
+```
+**Query Fetch request**
+```
 query{ getUsers{   
      id,
      userName

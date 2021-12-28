@@ -26,3 +26,11 @@ finally run the following command
 source ~/.bashrc
 
 ```
+
+
+# Install denon 
+
+```
+deno install --allow-read --allow-run --allow-write -f --unstable https://deno.land/x/denon/denon.ts
+
+```

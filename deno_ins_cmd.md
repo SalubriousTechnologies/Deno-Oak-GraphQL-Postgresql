@@ -34,3 +34,11 @@ source ~/.bashrc
 deno install --allow-read --allow-run --allow-write -f --unstable https://deno.land/x/denon/denon.ts
 
 ```
+
+**OR**
+
+```
+
+deno install -qAf --unstable https://raw.githubusercontent.com/nnmrts/denon/patch-4/denon.ts
+
+```

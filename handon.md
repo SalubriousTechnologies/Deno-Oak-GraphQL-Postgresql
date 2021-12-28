@@ -97,7 +97,8 @@ input UserInput {
 
 
 type Query {
-  getUsers(id :ID, userName: String): [User]    
+  getUsers(id :ID, userName: String): [User]
+  editUser(input: UserInput, id:ID): [User]
 }
 type Mutation{
   addUser(input: UserInput): [User]
@@ -133,6 +134,13 @@ const resolvers = {
       return instRec.rows;      
     }
   },
+  
+    editUser:  async (parent: any,{...data}:any, context: any, info: any) => {
+      
+      await psqlClient.queryObject("UPDATE  user_tbl SET \"userName\" = '"+data.input.userName+"', \"country\" = '"+data.input.country+"', \"email\" = '"+data.input.email+"', \"contact\" = '"+data.input.contact+"', \"address\" = '"+data.input.address+"',\"priority\" = '"+data.input.priority+"' WHERE id='"+data.id+"'");
+      const results = await psqlClient.queryObject("select * from user_tbl where id='"+data.id+"';");
+      return results.rows;      
+    },
 
 }
 

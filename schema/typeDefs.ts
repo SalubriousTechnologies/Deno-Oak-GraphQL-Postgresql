@@ -2,7 +2,7 @@ import { gql } from "../dependencies/oak-graphql-deps.ts";
 
 // GraphQL types
 export const typeDefs = (gql as any) `
-  enum Priority {
+enum Priority {
     LOW
     MEDIUM
     HIGH

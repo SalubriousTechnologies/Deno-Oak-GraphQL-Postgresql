@@ -133,9 +133,7 @@ const resolvers = {
         let where = ' WHERE ';
         let inpt = args.where;
         Object.keys(inpt).map((key) => where+=' "'+key +'"'+"='"+inpt[key]+"' AND" );         
-        let res = where.split(" ");  //split by space
-        res.pop();  //remove last element
-        let retstr = res.join(" ");          
+        let retstr = removeLastChar(where);                  
         sql = "select * from user_tbl "+retstr+" "+order+";"; 
              
       }

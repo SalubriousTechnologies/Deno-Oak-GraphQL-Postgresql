@@ -2,17 +2,14 @@
   "$schema": "https://deno.land/x/denon@2.4.9/schema.json",
   "scripts": {
     "start": {
-      "cmd": "deno run --unstable index.ts",
-      "allow":[
-        "env",
-        "net"
-      ],
-      "env":{
-        "PORT":"8088"
+      "cmd": "deno run --unstable index1.ts",
+      "allow": ["env", "net"],
+      "env": {
+        "PORT": "8088"
       }
     }
   },
-  "logger":{
-    "debug":true
+  "logger": {
+    "debug": true
   }
 }

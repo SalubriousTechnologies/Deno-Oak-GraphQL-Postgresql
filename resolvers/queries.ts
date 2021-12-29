@@ -1,46 +1,31 @@
-import { RouterContext } from "../dependencies/oak-deps.ts";
-import { queryPsqlResults } from '../psql-query.ts';
-const querySql = 'select * from user_tbl;';
-const Query = {
+import { psqlClient } from "../db/client.ts";
+import { removeLastChar } from "../util/cleanup.ts";
 
-    getUsers: async (parent: any,args: any, context: any, info: any) => {
-      
-        if(Object.keys(args).length === 0 && args.constructor === Object){
-          return await queryPsqlResults(querySql);
-        }else{
-           let where = ' WHERE ';
-           Object.keys(args).map((key) => where+=' "'+key +'"'+"='"+args[key]+"' AND" );
-           
-           let res = where.split(" ");  //split by space
-            res.pop();  //remove last element
-            let retstr = res.join(" ");
-            console.log("select * from user_tbl "+retstr+";");
-          return await queryPsqlResults("select * from user_tbl "+retstr+";");
-          //console.log(args['id']);
-        }
-        
-    },
-    Users: async (parent: any,args: any, context: any, info: any) => {
-      
-        if(Object.keys(args).length === 0 && args.constructor === Object){
-          return await queryPsqlResults(querySql);
-        }else{
-           let where = ' WHERE ';
-           Object.keys(args).map((key) => where+=' "'+key +'"'+"='"+args[key]+"' AND" );
-           
-           let res = where.split(" ");  //split by space
-            res.pop();  //remove last element
-            let retstr = res.join(" ");
-            console.log("select * from user_tbl "+retstr+";");
-          return await queryPsqlResults("select * from user_tbl "+retstr+";");
-          //console.log(args['id']);
-        }
-        
+export const Query = {
+  getUsers: async (_parent: unknown, args: any, context: any, info: any) => {
+    let sql = "";
+
+    let order = "";
+    if ("order" in args) {
+      order = 'ORDER BY "' + args.order.colName + '" ' + args.order.orderBy +
+        " ";
     }
-}
+    if ("limit" in args) {
+      order = " LIMIT " + args.limit.limit;
+    }
 
-
-
-export {
-    Query
-}
+    if (Object.keys(args).indexOf("where") === -1) {
+      sql = "select * from user_tbl " + order + ";";
+    } else {
+      let where = " WHERE ";
+      let inpt = args.where;
+      Object.keys(inpt).map((key) =>
+        where += ' "' + key + '"' + "='" + inpt[key] + "' AND"
+      );
+      let retstr = removeLastChar(where);
+      sql = "select * from user_tbl " + retstr + " " + order + ";";
+    }
+    const results = await psqlClient.queryObject(sql);
+    return results.rows;
+  },
+};

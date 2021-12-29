@@ -7,8 +7,5 @@ const client = {
   hostname: "localhost",
   port: 5432,
 };
-//const ft = await client.connect();
 
-const psqlClient = new Client(client);
-
-export { psqlClient };
+export const psqlClient = new Client(client);

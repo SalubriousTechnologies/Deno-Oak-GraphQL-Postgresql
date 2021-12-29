@@ -1,4 +1,4 @@
-import { psqlClient } from "../db/psql-connect.ts";
+import { psqlClient } from "../db/client.ts";
 import { processData } from "../util/cleanup.ts";
 
 export const Mutation = {

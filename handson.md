@@ -23,7 +23,18 @@ Create a table `user_tbl` with the following fields:
 You can create the table and the fields by executing the following query in pgadmin or pgsql:
 
 ```
-
+CREATE DATABASE path_basti;
+CREATE TABLE user_tbl(
+  id serial,
+  userName  text,
+	country  text,
+	email  text,
+	contact  integer,
+	address  text,
+	priority  text,
+	pincode integer,
+   PRIMARY KEY( id)
+);
 ```
 
 **Add dependencies (Oak framework and GraphQL and PostGresQL middleware)**

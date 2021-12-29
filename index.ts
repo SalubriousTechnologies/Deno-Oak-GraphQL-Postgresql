@@ -1,17 +1,11 @@
-
 // deno run --allow-net  deno-graphql.ts
 // Server start at http://localhost:8080
 
-import { Application } from "./dependencies/oak-deps.ts";
-import { GraphQLService } from './server.ts';
+import { Application } from "./deps.ts";
+import { GraphQLService } from "./server.ts";
 // import { resolvers } from './resolvers/resolvers.ts';
 
 const app = new Application();
-
-
-
-
-
 
 // const GraphQLService = await applyGraphQL<Router>({
 //   path: '/graphql',

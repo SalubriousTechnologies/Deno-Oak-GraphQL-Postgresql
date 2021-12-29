@@ -1,6 +1,6 @@
 import { Application, Router } from "./deps.ts";
 import { applyGraphQL, gql } from "./deps.ts";
-import { psqlClient } from "./psql-connect.ts";
+import { psqlClient } from "./db/psql-connect.ts";
 
 const types = gql`
 
